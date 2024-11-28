@@ -5,7 +5,7 @@ document.getElementById('chat-form').addEventListener('submit', async (e) => {
   document.getElementById('user-input').value = '';
 
   try {
-    const response = await fetch('https://vbejdnajxe.execute-api.us-east-2.amazonaws.com/prod', {
+    const response = await fetch('https://vbejdnajxe.execute-api.us-east-2.amazonaws.com/prod/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: userInput }),
