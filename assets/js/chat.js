@@ -5,11 +5,16 @@ document.getElementById('chat-form').addEventListener('submit', async (e) => {
   document.getElementById('user-input').value = '';
 
   try {
-    const response = await fetch('/api/chat', {
+    const response = await fetch('https://vbejdnajxe.execute-api.us-east-2.amazonaws.com/prod', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: userInput }),
     });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
     const data = await response.json();
     displayMessage('ChatGPT', data.reply);
   } catch (error) {
